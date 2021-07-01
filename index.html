@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+		<meta charset="utf-8">
+        <link href="index.css" rel="stylesheet">
+        <script src="index.js" defer></script>
+        <script src="https://unpkg.com/dayjs@1.10.5/dayjs.min.js"></script>
+        <script src="https://unpkg.com/dayjs@1.10.5/plugin/utc.js"></script>
+        <script src="https://unpkg.com/dayjs@1.10.5/plugin/timezone.js"></script>
+        <script src="https://unpkg.com/dayjs@1.10.5/plugin/localizedFormat.js"></script>
+        <script>
+            dayjs.extend(window.dayjs_plugin_utc);
+            dayjs.extend(window.dayjs_plugin_timezone);
+            dayjs.extend(window.dayjs_plugin_localizedFormat);
+        </script>
+		<title>Wall Clock</title>
+	</head>
+	<body>
+        <div id="clock">
+            <div id="hour-hand" class="hand"></div>
+            <div id="minute-hand" class="hand"></div>
+            <div id="second-hand" class="hand"></div>
+        </div>
+        <div id="date-display"></div>
+        <label id="timezone-label">
+            Timezone:
+            <select name="timezone" id="timezone-select">
+            </select>
+        </label>
+        <label id="locale-label">
+            Locale:
+            <select name="locale" id="locale-select">
+            </select>
+        </label>
+	</body>
+</html>
