@@ -493,7 +493,7 @@ if(navigator.language.startsWith('ar')) {
     document.head.getElementsByTagName("title")[0].textContent = "ساعة فضولي";
     var timezoneLabel = document.getElementById("timezone-label");
     var localeLabel = document.getElementById("locale-label");
-    timezoneLabel.childNodes[0].textContent = "المنطقة الزمنية: ";
+    timezoneLabel.childNodes[0].textContent = "التوقيت: ";
     localeLabel.childNodes[0].textContent = "اللغة: ";
     timezoneLabel.dir = "rtl";
     localeLabel.dir = "rtl";
