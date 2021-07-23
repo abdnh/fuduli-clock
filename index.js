@@ -31,6 +31,18 @@ function populateNumbers() {
     }
 }
 
+function randRange(min, max) {
+    return min + Math.random() * (max - min)
+}
+
+// https://stackoverflow.com/questions/494143/creating-a-new-dom-element-from-an-html-string-using-built-in-dom-methods-or-pro
+function htmlToElement(html) {
+    var template = document.createElement('template');
+    html = html.trim();
+    template.innerHTML = html;
+    return template.content.firstChild;
+}
+
 function updateHands(date) {
     var constantTransforms = "translate(calc(var(--clock-width)/2), calc(var(--clock-width)/2))";
     var initialDegree = -90;
@@ -47,9 +59,50 @@ function updateHands(date) {
     minuteHand.style.transform = `${constantTransforms} rotate(${minutesDegree}deg)`;
     secondHand.style.transform = `${constantTransforms} rotate(${secondsDegree}deg)`;
 
-    if(date.hour() == 0 && date.minute() == 0) {
+    if(date.hour() == 0 && date.minute() == 0 && date.second() == 0) {
         var clock = document.getElementById("clock");
         clock.style.filter = 'saturate(100) hue-rotate(100deg)';
+        for(let i = 0; i < 50; i++) {
+            let el = htmlToElement(`<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#8a0303" class="drop" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 16a6 6 0 0 0 6-6c0-1.655-1.122-2.904-2.432-4.362C10.254 4.176 8.75 2.503 8 0c0 0-6 5.686-6 10a6 6 0 0 0 6 6zM6.646 4.646c-.376.377-1.272 1.489-2.093 3.13l.894.448c.78-1.559 1.616-2.58 1.907-2.87l-.708-.708z"/>
+                </svg>`);
+            el.style.position = 'absolute';
+            let left = i * randRange(0, 6)
+            el.style.left = `${left}%`;
+            document.body.appendChild(el)
+            el.animate(
+                [
+                    {
+                        transform: 'translateY(0vh)'
+                    },
+                    {
+                        transform: 'translateY(100vh)'
+                    }
+                ],
+                {
+                    duration: randRange(250, 500),
+                    iterations: Infinity
+                }
+            );
+            clock.style.backgroundImage = "url('fuduuli2.png')";
+            document.body.animate(
+                [
+                    {
+                        backgroundColor: 'rgba(0,0,0,0)',
+                        filter: 'contrast(0%)'
+                    },
+                    {
+                        backgroundColor: 'rgba(0,0,0,0.9)',
+                        filter: 'contrast(1000%)'
+                    }
+                ],
+                {
+                    duration: 1000,
+                    iterations: 1,
+                    fill: 'forwards'
+                }
+            );
+        }
     }
 }
 
@@ -477,10 +530,20 @@ function updateDisplay() {
     showDate(date);
 }
 
+var customDate;
+
+function updateCustomDisplay() {
+    customDate = customDate.add(1, 'second');
+    updateHands(customDate);
+    showDate(customDate);
+}
+
 function setCustomDate(date) {
     clearInterval(updateDisplayIntervalID);
+    customDate = date;
     updateHands(date);
     showDate(date);
+    setInterval(updateCustomDisplay, 1000);
 }
 
 populateNumbers();
