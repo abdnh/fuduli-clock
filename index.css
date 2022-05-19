@@ -7,13 +7,17 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #FFF8E7;
+}
+
 body > * {
     position: absolute;
 }
 
 #clock {
     border-radius: 50%;
-    background: 50% 45%/ 100px no-repeat url('fuduuli.jpg');
+    background: 50% 45%/ 100px no-repeat url('fuduuli.ico');
     border: 1px solid black;
     width: var(--clock-width);
     height: var(--clock-width);
