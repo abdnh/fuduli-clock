@@ -75,19 +75,35 @@ body > * {
 
 #date-display {
     top: calc(var(--clock-offset-top) + var(--clock-width) + 2rem);
-    left: calc(54vw - var(--clock-width)/2);
+    left: calc(50vw - var(--clock-width)/2);
+    width: var(--clock-width);
+    text-align: center;
 }
 
-#timezone-label {
+#timezone-section {
     top: calc(var(--clock-offset-top) + var(--clock-width) + 4rem);
     left: calc(50vw - var(--clock-width)/2);
 }
 
-#locale-label {
+#locale-section {
     top: calc(var(--clock-offset-top) + var(--clock-width) + 6rem);
     left: calc(50vw - var(--clock-width)/2);
 }
 
 #locale-select {
     margin-left: 1.5rem;
+}
+
+#timezone-section, #locale-section {
+    width: var(--clock-width);
+    display: flex;
+}
+
+#timezone-section>select, #locale-section>select {
+    width: 73%;
+}
+
+#timezone-section>label, #locale-section>label {
+    display: inline-block;
+    margin-right: calc(2 * var(--clock-width) / 100);
 }
