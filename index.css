@@ -11,13 +11,13 @@ body {
     background-color: #FFF8E7;
 }
 
-body > * {
+body>* {
     position: absolute;
 }
 
 #clock {
     border-radius: 50%;
-    background: 50% 45%/ 100px no-repeat url('fuduuli.ico');
+    background: 50% 45%/ 100px no-repeat url('fuduli.ico');
     border: 1px solid black;
     width: var(--clock-width);
     height: var(--clock-width);
@@ -32,7 +32,7 @@ body > * {
     transform-origin: center left;
 }
 
-.clock-num > div {
+.clock-num>div {
     position: absolute;
     transform-origin: center left;
 }
@@ -44,7 +44,7 @@ body > * {
     transform-origin: center left;
 }
 
-.clock-graduation > div {
+.clock-graduation>div {
     width: 1px;
     height: 7px;
     background: black;

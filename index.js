@@ -84,7 +84,7 @@ function updateHands(date) {
                     iterations: Infinity
                 }
             );
-            clock.style.backgroundImage = "url('fuduuli2.png')";
+            clock.style.backgroundImage = "url('fuduli2.png')";
             document.body.animate(
                 [
                     {
