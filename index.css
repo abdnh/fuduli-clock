@@ -74,7 +74,7 @@ body>* {
 }
 
 #date-display {
-    top: calc(var(--clock-offset-top) + var(--clock-width) + 2rem);
+    top: calc(var(--clock-offset-top) + var(--clock-width) + 1rem);
     left: calc(50vw - var(--clock-width)/2);
     width: var(--clock-width);
     text-align: center;
